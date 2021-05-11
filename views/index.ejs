@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Consultório</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-light bg-primary">
+        <a class="navbar-brand" href="/">
+            <img src="img/medico.png" height="42" width="42">
+            <a href="/consulta"><button style = "margin-left: 5vh;" class="btn btn-success">Iniciar Consultas</button></a>  
+        </a>
+    </nav><br><br>
+    <form method="POST" action="/addPaciente" id="formulario">
+        <label>Cadastro de Pacientes</label>
+        <hr>
+        <label>Nome</label>
+        <input type="text" name="paciente" id="paciente" class="form-control" placeholder="Nome do Paciente"><br>
+        
+        <select name="tipo" class="form-select">
+            <option value="tipo">Tipo do Paciente</option>
+            <option value="homem">Homem</option>
+            <option value="mulher">Mulher</option>
+            <option value="crianca">Criança</option>
+        </select><br><br>
+
+        <select name="sintoma" class="form-select">
+            <option value="sintoma">Tipo do sintoma do Paciente</option>
+            <option value="geral">Geral</option>
+            <option value="cardiologico">Cardiológico</option>
+            <option value="ginecologico">Ginecológico</option>
+        </select><br><br>
+
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
+    </form>
+    <br>
+    <h1 style="margin-left: 5vh;">Pacientes na Lista de Espera:</h1>
+    <hr>
+    <% pacientes.forEach(paciente => {%>
+        <br>
+        <div class="card" id="card">
+            <div class="card-header">
+                <h4>Nome: <%=paciente.nome%></h4>
+            </div>
+            <div class="card-body">
+                <h5>Tipo: <%=paciente.tipo%></h5><br>
+                <h5>Sintoma: <%=paciente.sintoma%></h5>
+            </div>
+        </div>
+    <%})%>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="/js/bootstrap.min.js"></script>
+</html>
